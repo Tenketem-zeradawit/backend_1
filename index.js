@@ -10,6 +10,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+connectDatabase();
 app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static("uploads"));
 app.get("/", (request, response) => {
@@ -18,7 +19,7 @@ app.get("/", (request, response) => {
 });
 app.use("/books", booksRoute);
 app.use('/user',userRoute);
-connectDatabase();
+
 app.listen(PORT, () => {
   console.log(`App is listening to port ${PORT}`);
 });
